@@ -46,6 +46,6 @@ Will this fail? Probably, this is a side project that has no real end goal. Keep
 - Build a collector and add to [kore_collector](https://github.com/Cr0n1c/kore_collector)
 - Build a connector and add the collector to [/connectors](connectors). Use [ldap.py](connectors/ldap.py) 
 as a reference.
-- Add your connector to `run_connectors` function inside [__init__.py](__init__.py).
-- Run `__init__.py` to validate things are working.
+- Add your connector to `run_connectors` function inside [kore_aggregator.py](kore_aggregator.py).
+- Run `kore_aggregator.py` to validate things are working.
  
