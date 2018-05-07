@@ -1,0 +1,17 @@
+neo4j:
+  server: 1.1.1.1
+  user: neo4j
+  password: neo4j
+datasources:
+  activedirectory:
+    users: activedirectory/users.csv
+    groups: activedirectory/groups.csv
+    computers: activedirectory/computers.csv
+  sccm:
+    users: sccm/v_r_user.csv
+    groups: sccm/v_r_usergroup.csv
+    computers: sccm/v_r_system.csv
+    consoleusers: sccm/v_gs_system_console_user.csv
+    localgroupmembers: sccm/v_gs_localgroup_members.csv
+  nessus:
+    scan: nessus/nessus.nessus
