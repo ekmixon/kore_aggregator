@@ -21,15 +21,15 @@ def run_connectors():
 
 
 if __name__ == "__main__":
-    print "[+] Loading Configuration YAML"
+    print("[+] Loading Configuration YAML")
     setup_conf = kore.Configuration(CONFIG_YAML)
     kore.connection.initiate_refresh(DEBUG_MODE, setup_conf)
 
-    print "[+] Starting up Neo4j Connector"
+    print("[+] Starting up Neo4j Connector")
     neo4j = kore.connection.setup(setup_conf)
 
-    print "[+] Starting Integrations"
+    print("[+] Starting Integrations")
     run_connectors()
 
-    print "[+] Completed Integrations"
+    print("[+] Completed Integrations")
 

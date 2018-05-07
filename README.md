@@ -38,6 +38,14 @@ to the same one use by [BloodHound](https://github.com/BloodHoundAD/BloodHound).
 sure that anything that any data that we bring in can only enrich current BloodHound offerings and 
 vice versa.
 
-### Will this fail?
+Will this fail? Probably, this is a side project that has no real end goal. Keeping things honest here :)
 
-Probably, this is a side project that has no real end goal. Keeping things honest here :)
+
+## How to contribute
+
+- Build a collector and add to [kore_collector](https://github.com/Cr0n1c/kore_collector)
+- Build a connector and add the collector to [/connectors](connectors). Use [ldap.py](connectors/ldap.py) 
+as a reference.
+- Add your connector to `run_connectors` function inside [__init__.py](__init__.py).
+- Run `__init__.py` to validate things are working.
+ 
