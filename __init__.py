@@ -1,30 +1,31 @@
-import connection
 import kore
-import transforms
+import connectors
 
 CONFIG_YAML = "configuration.yaml"
+DEBUG_MODE = True
 
 
-def run_transforms():
+def run_connectors():
     # Select the transforms we want to ingest
-    transforms.ldap.run_transform(neo4j)
-    transforms.sccm.run_transform(neo4j)
+    connectors.ldap.run_connector(neo4j)
+    connectors.sccm.run_connector(neo4j)
 
-    # transforms that we are not using
+    # connectors that we are not using
     """
-    transforms.nessus.run_transform(neo4j)
-    transforms.osquery.run_transform(neo4j)
-    transforms.sysmon.run_transform(neo4j)
-    transforms.bro.run_transform(neo4j)
-    transforms.qualys.run_transform(neo4j)
+    connectors.nessus.run_connector(neo4j)
+    connectors.osquery.run_connector(neo4j)
+    connectors.sysmon.run_connector(neo4j)
+    connectors.bro.run_connector(neo4j)
+    connectors.qualys.run_connector(neo4j)
     """
 
 
 if __name__ == "__main__":
-    print "[+] Loading YAML"
+    print "[+] Loading Configuration YAML"
     setup_conf = kore.Configuration(CONFIG_YAML)
-    connection.initiate_refresh(True, setup_conf)
+    kore.connection.initiate_refresh(DEBUG_MODE, setup_conf)
+
     print "[+] Starting up Neo4j Connector"
-    neo4j = connection.setup(setup_conf)
-    run_transforms()
+    neo4j = kore.connection.setup(setup_conf)
+    run_connectors()
 
