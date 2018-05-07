@@ -27,5 +27,9 @@ if __name__ == "__main__":
 
     print "[+] Starting up Neo4j Connector"
     neo4j = kore.connection.setup(setup_conf)
+
+    print "[+] Starting Integrations"
     run_connectors()
+
+    print "[+] Completed Integrations"
 

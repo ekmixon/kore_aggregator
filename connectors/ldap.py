@@ -14,7 +14,7 @@ def import_users(connection, csv):
     constraints = ["distinguishedname"]
     check_constraints(connection, object_type, constraints)
 
-    print "[+] Ingesting {}... ".format(object_type)
+    print "\t[+] Ingesting {}... ".format(object_type)
 
     query = r"""USING PERIODIC COMMIT 1000
         LOAD CSV WITH HEADERS FROM "file:///%s" AS row
@@ -40,7 +40,7 @@ def import_computers(connection, csv):
     constraints = ["distinguishedname"]
     check_constraints(connection, object_type, constraints)
 
-    print "[+] Ingesting {}... ".format(object_type)
+    print "\t[+] Ingesting {}... ".format(object_type)
 
     query = r"""USING PERIODIC COMMIT 1000
             LOAD CSV WITH HEADERS FROM "file:///%s" AS row
@@ -66,7 +66,7 @@ def import_groups(connection, csv):
     constraints = ["samaccountname"]
     check_constraints(connection, object_type, constraints)
 
-    print "[+] Ingesting {}... ".format(object_type)
+    print "\t[+] Ingesting {}... ".format(object_type)
 
     query = r"""USING PERIODIC COMMIT 1000
             LOAD CSV WITH HEADERS FROM "file:///%s" AS row
@@ -89,7 +89,7 @@ def import_group_memberships(connection, users, groups, computers):
                   (groups, "Group")
                  ]
 
-    print "[+] Ingesting {}... ".format(relationship)
+    print "\t[+] Ingesting {}... ".format(relationship)
 
     for csv, object_name in csv_tuples:
         if csv is None:

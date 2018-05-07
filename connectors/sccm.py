@@ -1,7 +1,7 @@
-def check_constraints(connection, object, constraints):
-    for property in constraints:
+def check_constraints(connection, obj, constraints):
+    for prop in constraints:
         try:
-            connection.schema.create_uniqueness_constraint(object, property)
+            connection.schema.create_uniqueness_constraint(obj, prop)
         except:
             pass
 
@@ -14,7 +14,7 @@ def import_users(connection, csv):
     constraints = ["distinguishedname"]
     check_constraints(connection, object_type, constraints)
 
-    print "[+] Ingesting {}... ".format(object_type)
+    print "\t[+] Ingesting {}... ".format(object_type)
 
     query = r"""USING PERIODIC COMMIT 1000
         LOAD CSV WITH HEADERS FROM "file:///%s" AS row
@@ -33,7 +33,7 @@ def import_computers(connection, csv):
     constraints = ["distinguishedname"]
     check_constraints(connection, object_type, constraints)
 
-    print "[+] Ingesting {}... ".format(object_type)
+    print "\t[+] Ingesting {}... ".format(object_type)
 
     query = r"""USING PERIODIC COMMIT 1000
             LOAD CSV WITH HEADERS FROM "file:///%s" AS row
@@ -54,7 +54,7 @@ def import_groups(connection, csv):
     constraints = ["samaccountname"]
     check_constraints(connection, object_type, constraints)
 
-    print "[+] Ingesting {}... ".format(object_type)
+    print "\t[+] Ingesting {}... ".format(object_type)
 
     query = r"""USING PERIODIC COMMIT 1000
             LOAD CSV WITH HEADERS FROM "file:///%s" AS row
@@ -73,7 +73,7 @@ def import_console_user(connection, console_csv):
 
     relationship = "logged_into"
 
-    print "[+] Ingesting {}... ".format(relationship)
+    print "\t[+] Ingesting {}... ".format(relationship)
 
     query = r"""USING PERIODIC COMMIT 1000
             LOAD CSV WITH HEADERS FROM "file:///%s" AS row
