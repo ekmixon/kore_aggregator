@@ -69,7 +69,6 @@ class NessusConf(Source):
 
     def __init__(self, conf_file):
         Source.__init__(self, conf_file)
-        pass
 
 
 class Configuration:
